@@ -1,20 +1,23 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class ProductsOrders extends Model {
+  class ProductOrders extends Model {
     static associate(models) {
-      ProductsOrders.belongsTo(models.Orders, {
+      ProductOrders.belongsTo(models.Orders, {
         foreignKey: 'order_id',
+      });
+      ProductOrders.belongsTo(models.Products, {
+        foreignKey: 'product_id',
       });
     }
   }
-  ProductsOrders.init({
+  ProductOrders.init({
     order_id: DataTypes.INTEGER,
     product_id: DataTypes.INTEGER,
     qtd: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'ProductsOrders',
+    modelName: 'ProductOrders',
   });
-  return ProductsOrders;
+  return ProductOrders;
 };
