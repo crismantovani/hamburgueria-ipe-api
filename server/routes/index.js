@@ -1,9 +1,23 @@
-const { Router } = require('express');
-const ExampleRouter = require('./ExampleRouter');
+const express = require('express');
 
-const router = Router();
+const app = express();
+const users = require('./users');
+// const products = require('./products');
+// const orders = require('./orders');
 
-// aqui vai todas as rotas
-router.use('/example', ExampleRouter);
+app.use('/users', users);
+// app.use('/products', products);
+// app.use('/orders', orders);
 
-module.exports = router;
+module.exports = app;
+
+// DEFAULT
+// const { Router } = require('express');
+// const ExampleRouter = require('./ExampleRouter');
+
+// const router = Router();
+
+// // aqui vai todas as rotas
+// router.use('/example', ExampleRouter);
+
+// module.exports = router;
