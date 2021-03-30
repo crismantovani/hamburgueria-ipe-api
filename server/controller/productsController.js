@@ -5,7 +5,7 @@
 const database = require('../db/models');
 
 // GET All Products
-const getProducts = (req, res) => {
+const getProducts = (_, res) => {
   database.Products.findAll()
     .then((result) => {
       res.status(200).json(result);
@@ -17,7 +17,7 @@ const getProducts = (req, res) => {
 
 // GET Product by ID
 const getProductById = (req, res) => {
-  database.Products.findAll({ where: { id: req.params.uid } })
+  database.Products.findAll({ where: { id: req.params.productId } })
     .then((result) => {
       res.status(200).json(result);
     })
@@ -75,7 +75,7 @@ const updateProduct = (req, res) => {
       type,
       sub_type,
     },
-    { where: { id: req.params.id } },
+    { where: { id: req.params.productId } },
   )
     .then(() => {
       res.status(200).json({
@@ -91,7 +91,7 @@ const updateProduct = (req, res) => {
 
 // Delete a product
 const deleteProduct = (req, res) => {
-  database.Users.destroy({ where: { id: req.params.id } })
+  database.Products.destroy({ where: { id: req.params.productId } })
     .then(() => {
       res.status(200).json({
         message: 'Produto excluído com sucesso :)!',
