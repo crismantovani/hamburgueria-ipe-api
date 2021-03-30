@@ -19,7 +19,7 @@ const getUsers = (req, res) => {
 
 // GET User by ID
 const getUserById = (req, res) => {
-  database.Users.findAll({ where: { id: req.params.uid } })
+  database.Users.findAll({ where: { id: req.params.userId } })
     .then((result) => {
       res.status(200).json(result);
     })
@@ -69,7 +69,7 @@ const updateUser = (req, res) => {
       role,
       restaurant,
     },
-    { where: { id: req.params.uid } },
+    { where: { id: req.params.userId } },
   )
     .then(() => {
       res.status(200).json({
@@ -85,7 +85,7 @@ const updateUser = (req, res) => {
 
 // DELETE USER
 const deleteUser = (req, res) => {
-  database.Users.destroy({ where: { id: req.params.uid } })
+  database.Users.destroy({ where: { id: req.params.userId } })
     .then(() => {
       res.status(200).json({
         message: 'Usuário excluído!',
