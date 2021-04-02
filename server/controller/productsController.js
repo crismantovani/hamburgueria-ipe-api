@@ -11,7 +11,7 @@ const getProducts = (_, res) => {
       res.status(200).json(result);
     })
     .catch(() => res.json({
-      message: 'Usuário não autenticado',
+      message: 'Erro na requisição',
     }));
 };
 

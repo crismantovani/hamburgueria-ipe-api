@@ -16,9 +16,11 @@ module.exports = {
         type: Sequelize.DOUBLE,
       },
       flavor: {
+        allowNull: true,
         type: Sequelize.STRING,
       },
       complement: {
+        allowNull: true,
         type: Sequelize.STRING,
       },
       image: {
@@ -30,6 +32,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       sub_type: {
+        allowNull: true,
         type: Sequelize.STRING,
       },
       createdAt: {
