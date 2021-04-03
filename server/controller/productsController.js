@@ -1,10 +1,7 @@
 /* eslint-disable camelcase */
-// GET, POST, PUT & DELETE
-//   getProducts, getProductsById, addNewProduct, getProduct, updateProduct, deleteProduct,
 
 const database = require('../db/models');
 
-// GET All Products
 const getProducts = (_, res) => {
   database.Products.findAll()
     .then((result) => {
@@ -15,18 +12,16 @@ const getProducts = (_, res) => {
     }));
 };
 
-// GET Product by ID
 const getProductById = (req, res) => {
   database.Products.findAll({ where: { id: req.params.productId } })
     .then((result) => {
       res.status(200).json(result);
     })
     .catch(() => res.json({
-      message: 'Erro na requisição',
+      message: 'Erro ao achar usuário :(',
     }));
 };
 
-// Adds a new Product
 const addNewProduct = (req, res) => {
   const {
     name,
@@ -50,11 +45,10 @@ const addNewProduct = (req, res) => {
       res.status(201).json(result);
     })
     .catch(() => res.json({
-      message: 'Erro na requisição',
+      message: 'Erro ao adicionar produto :(',
     }));
 };
 
-// Update a Product
 const updateProduct = (req, res) => {
   const {
     name,
@@ -89,7 +83,6 @@ const updateProduct = (req, res) => {
     });
 };
 
-// Delete a product
 const deleteProduct = (req, res) => {
   database.Products.destroy({ where: { id: req.params.productId } })
     .then(() => {
@@ -111,26 +104,3 @@ module.exports = {
   updateProduct,
   deleteProduct,
 };
-
-// Respostas de sucesso
-
-// 200 OK
-// 201 Created
-// 202 Accepted
-// 204 No Content
-
-// Respostas de erro do Cliente
-
-// 400 Bad Request
-// 401 Unauthorized
-// 403 Forbidden
-// 404 Not Found
-// 408 Request Timeout
-
-// Respostas de erro do Servidor
-
-// 500 Internal Server Error
-// 502 Bad Gateway
-// 503 Service Unavailable
-
-// https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status#respostas_informativas

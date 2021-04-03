@@ -1,13 +1,6 @@
-// GET, POST, PUT & DELETE
-// getUsers, addNewUser, getUserById, updateUser, deleteUser,
-
-// const express = require('express');
-// const app = express();
-
 const database = require('../db/models');
 
-// GET All Users
-const getUsers = (req, res) => {
+const getUsers = (_, res) => {
   database.Users.findAll()
     .then((result) => {
       res.status(200).json(result);
@@ -17,7 +10,6 @@ const getUsers = (req, res) => {
     }));
 };
 
-// GET User by ID
 const getUserById = (req, res) => {
   database.Users.findAll({ where: { id: req.params.userId } })
     .then((result) => {
@@ -28,7 +20,6 @@ const getUserById = (req, res) => {
     }));
 };
 
-// CREATE a new User
 const addNewUser = (req, res) => {
   const {
     name,
@@ -52,7 +43,6 @@ const addNewUser = (req, res) => {
     }));
 };
 
-// Change user
 const updateUser = (req, res) => {
   const {
     name,
@@ -83,7 +73,6 @@ const updateUser = (req, res) => {
     });
 };
 
-// DELETE USER
 const deleteUser = (req, res) => {
   database.Users.destroy({ where: { id: req.params.userId } })
     .then(() => {
@@ -105,26 +94,3 @@ module.exports = {
   updateUser,
   deleteUser,
 };
-
-// Respostas de sucesso
-
-// 200 OK
-// 201 Created
-// 202 Accepted
-// 204 No Content
-
-// Respostas de erro do Cliente
-
-// 400 Bad Request
-// 401 Unauthorized
-// 403 Forbidden
-// 404 Not Found
-// 408 Request Timeout
-
-// Respostas de erro do Servidor
-
-// 500 Internal Server Error
-// 502 Bad Gateway
-// 503 Service Unavailable
-
-// https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status#respostas_informativas
